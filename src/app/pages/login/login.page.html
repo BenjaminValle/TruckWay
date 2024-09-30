@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <ion-title class="title">Bienvenido de nuevo</ion-title>
+    <p class="subTitle">Inicia sesión para acceder a tu cuenta</p>
+  </div>
+
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="ion-padding">
+
+      <ion-item>
+        <ion-input formControlName="username" placeholder="Nombre de Usuario" class="input"></ion-input>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-item>
+      <ion-note *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched" color="danger">
+        Ingrese su Nombre de Usuario
+      </ion-note>
+
+      <ion-item>
+        <ion-input formControlName="password" placeholder="Contraseña" type="password" class="input"></ion-input>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      </ion-item>
+      <ion-note *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" color="danger">
+        Ingrese su Contraseña
+      </ion-note>
+
+      <div class="forgotPassword">
+        <a [routerLink]="['/reset-password']" style="color: #FFC33F;">¿Olvidaste tu contraseña?</a>
+      </div>
+      <div class="signupLink">
+        <p > ¿Nuevo miembro?<a style="color: #FFC33F;" [routerLink]="['/signup']">Regístrate ahora</a></p>
+      </div>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
+      <ion-fab-button expand="block" type="submit" [disabled]="loginForm.invalid" [routerLink]="['/home']">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </form>
+</ion-content>

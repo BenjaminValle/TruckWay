@@ -1,0 +1,47 @@
+
+<ion-content [fullscreen]="true">
+  <div class="header">
+    <ion-title class="title">Bienvenido</ion-title>
+    <p class="subTitle">Regístrate para crear tu cuenta</p>
+  </div>
+
+
+  <form [formGroup]="signupForm" (ngSubmit)="registro()">
+    <div class="ion-padding">
+
+      <ion-item>
+        <ion-input formControlName="username" placeholder="Nombre de Usuario" type="text" class="input"></ion-input>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-item>
+      <ion-note *ngIf="signupForm.controls['username'].hasError('required') && signupForm.controls['username'].touched" color="danger">
+        Ingrese su Nombre de Usuario
+      </ion-note>
+
+      <ion-item>
+        <ion-input formControlName="email" placeholder="Correo Electronico" type="email" class="input"></ion-input>
+        <ion-icon name="mail-outline"></ion-icon>
+      </ion-item>
+      <ion-note *ngIf="signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched" color="danger">
+        Ingrese su Correo Electronico
+      </ion-note>
+
+      <ion-item>
+        <ion-input formControlName="password" placeholder="Contraseña" type="password" class="input"></ion-input>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      </ion-item>
+      <ion-note *ngIf="signupForm.controls['password'].hasError('required') && signupForm.controls['password'].touched" color="danger">
+        Ingrese su Contraseña
+      </ion-note>
+
+      <div class="signinLink">
+        <p > Ya eres miembro?<a style="color: #FFC33F;" [routerLink]="['/login']">Inicia sesión ahora</a></p>
+      </div>
+    </div>
+    <ion-fab vertical="bottom" horizontal="end" style="margin-bottom: 30px;">
+      <ion-fab-button expand="block" type="submit" [disabled]="signupForm.invalid" [routerLink]="['/home']">
+        <ion-icon name="chevron-forward"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </form>
+</ion-content>
+
