@@ -10,9 +10,9 @@ import { EditPage } from '../edit/edit.page';
 export class HomePage {
 
   profile = {
-    name: 'Sundar',
+    name: 'Pedro',
     img: 'assets/icon/favicon.png',
-    email: 'me@codesundar.com',
+    email: 'Pedro@gmail.com',
   }
 
   constructor(
